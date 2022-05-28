@@ -1,0 +1,6 @@
+@mixin sp() {
+  // タブレットを考慮するのが手間なのでPCまでは一律スマホと同じ表示にするようにした
+  @media screen and (max-width: 1200px) {
+    @content;
+  }
+}
