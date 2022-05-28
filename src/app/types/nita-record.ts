@@ -17,4 +17,6 @@ export type NitaRecord = {
     url: string | null;
     /* 検索用の文言 */
     searchTrack: string[];
+    /* WRから何落ちか */
+    orLess?: number;
 };

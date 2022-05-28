@@ -16,6 +16,9 @@
                     <mat-card-title class="title">{{nitaRecord.track}}</mat-card-title>
                     <mat-card-content class="content">
                         <ng-container *ngIf="nitaRecord.myRecord;else noRecord">
+                            <div *ngIf="nitaRecord.orLess && nitaRecord.orLess <= 5" class="or-less-{{nitaRecord.orLess}}">{{nitaRecord.orLess}}落ち</div>
+                            <div *ngIf="nitaRecord.orLess && nitaRecord.orLess > 5" class="out-or-less">圏外</div>
+                            <div><span class="sub-title">WR:</span>{{nitaRecord.wr1st}}</div>
                             <div><span class="sub-title">自分の記録:</span>{{nitaRecord.myRecord}}</div>
                             <div><span class="sub-title">1Rap:</span>{{nitaRecord.firstRap}}</div>
                             <div><span class="sub-title">2Rap:</span>{{nitaRecord.secondRap}}</div>
