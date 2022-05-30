@@ -1,0 +1,28 @@
+@import "responsive";
+
+:host {
+  display: block;
+}
+
+.or-less-container {
+  display: flex;
+  align-items: center;
+
+  @include sp() {
+    display: block;
+  }
+  .or-less-group {
+    display: flex;
+    align-items: center;
+
+    @include sp {
+      margin-top: 4px;
+    }
+
+    .or-less-section {
+      display: flex;
+      align-items: center;
+      width: 80px;
+    }
+  }
+}

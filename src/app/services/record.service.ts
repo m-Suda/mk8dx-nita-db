@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { NitaRecord } from './types/nita-record';
+import { NitaRecord } from '../types/nita-record';
 import { map, Observable, of, tap } from 'rxjs';
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 
 type TaData = {
@@ -33,7 +33,7 @@ export class RecordService {
                     return records.map(record => {
                         const { wr1st, myRecord } = record;
                         if (!myRecord) {
-                            return record;
+                            return { ...record, orLess: undefined };
                         }
                         const orLess = this.getOrLessNumber(this.getDiff(wr1st, myRecord));
                         return { ...record, orLess };

@@ -3,12 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { MaterialModule } from './material.module';
+import { MaterialModule } from './modules/material.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { OrLessComponent } from './components/or-less/or-less.component';
+import { TotalOrLessComponent } from './components/total-or-less/total-or-less.component';
 
 @NgModule({
     declarations: [
         AppComponent,
+        OrLessComponent,
+        TotalOrLessComponent,
     ],
     imports: [
         BrowserModule,

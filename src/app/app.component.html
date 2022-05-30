@@ -8,16 +8,19 @@
     <mat-toolbar class="header">MK8DX NITA DB</mat-toolbar>
 </header>
 
-<main class="main">
-    <ng-container *ngIf="nitaRecords.length">
+<main class="main" *ngIf="nitaRecords.length">
+
+    <app-total-or-less class="total-or-less"
+                       [nitaRecords]="nitaRecords"></app-total-or-less>
+
+    <ng-container>
         <div class="main-container">
             <div class="card-container" *ngFor="let nitaRecord of nitaRecords">
                 <mat-card class="card">
                     <mat-card-title class="title">{{nitaRecord.track}}</mat-card-title>
                     <mat-card-content class="content">
                         <ng-container *ngIf="nitaRecord.myRecord;else noRecord">
-                            <div *ngIf="nitaRecord.orLess && nitaRecord.orLess <= 5" class="or-less-{{nitaRecord.orLess}}">{{nitaRecord.orLess}}落ち</div>
-                            <div *ngIf="nitaRecord.orLess && nitaRecord.orLess > 5" class="out-or-less">圏外</div>
+                            <app-or-less [orLess]="nitaRecord.orLess"></app-or-less>
                             <div><span class="sub-title">WR:</span>{{nitaRecord.wr1st}}</div>
                             <div><span class="sub-title">自分の記録:</span>{{nitaRecord.myRecord}}</div>
                             <div><span class="sub-title">1Rap:</span>{{nitaRecord.firstRap}}</div>

@@ -20,6 +20,10 @@
   color: rgba(127, 127, 127, 0.5);
 }
 
+.total-or-less {
+  margin-top: 20px;
+}
+
 .main-container {
   display: flex;
   flex-wrap: wrap;
@@ -55,6 +59,8 @@
     }
   }
   .card {
+    color: #4E4E4E;
+
     .title {
       font-size: 18px;
     }
@@ -62,40 +68,6 @@
     .content {
       min-height: 120px;
       font-size: 14px;
-
-      .or-less-1,
-      .or-less-2,
-      .or-less-3,
-      .or-less-4,
-      .or-less-5,
-      .out-or-less {
-        width: 50px;
-        border-radius: 6px;
-        text-align: center;
-      }
-      .or-less-1 {
-        background-color: #ffd700;
-        color: #4E4E4E;
-      }
-      .or-less-2 {
-        background-color: #C9CACA;
-        color: #4E4E4E;
-      }
-      .or-less-3 {
-        background-color: #d87b5f;
-        color: #FFF;
-      }
-      .or-less-4 {
-        background-color: #00c40e;
-        color: #FFF;
-      }
-      .or-less-5 {
-        background-color: #a9ceec;
-        color: #FFF;
-      }
-      .out-or-less {
-        border: 1px #4E4E4E solid;
-      }
 
       .sub-title {
         display: inline-block;

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NitaRecord } from './types/nita-record';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { RecordService } from './record.service';
+import { RecordService } from './services/record.service';
 
 @Component({
     selector: 'app-root',
