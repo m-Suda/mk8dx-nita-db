@@ -5,7 +5,8 @@
 export const environment = {
     production: false,
     api: {
-        url: 'https://api.sssapi.app/ikg63tciB678piYs3iMKM',
+        domain: 'https://api.sssapi.app/',
+        userSettingUrl: 'https://api.sssapi.app/xXA6t_G1jkW6wyNqdsCx5'
     },
 };
 
