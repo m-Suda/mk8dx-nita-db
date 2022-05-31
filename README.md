@@ -1,27 +1,10 @@
-# Mk8dxNitaDb
+# MK8DX NITA DB
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.7.
+## 概要
+マリオカート8DXにおける、NITAの記録を管理・閲覧することを目的としたWebアプリケーション
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## 仕様
+MK8DX NITA DB User Settingsスプレッドシートに登録されているユーザーIDがパスにあるとき、
+それに対応するAPI IDを元にSSSAPIのAPIを叩いてデータを取得する。
+- 実際にブラウザのURLやPostman等からURLを叩かれると他人のAPI IDが分かってしまうが、ブラウザのDeveloper toolsから見えるのと、スプレッドシート自体本人と管理者しかわからず編集権限も限られるため問題無い。
+- 他人に共有できるように利便性をもたせる。
