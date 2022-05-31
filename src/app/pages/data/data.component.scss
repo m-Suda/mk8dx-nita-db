@@ -1,0 +1,77 @@
+@import "src/assets/styles/responsive";
+
+:host {
+  display: block;
+}
+
+.main {
+  padding: 0 10%;
+  @include sp {
+    padding: 0 5%;
+  }
+}
+
+.no-data {
+  color: rgba(127, 127, 127, 0.5);
+}
+
+.total-or-less {
+  margin-top: 20px;
+}
+
+.main-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 20px;
+  padding-bottom: 20px;
+
+  .card-container {
+    width: 25%;
+    box-sizing: border-box;
+    padding-right: 12px;
+    // 右端のアイテムはpadding-rightをつけない
+    &:nth-child(4n) {
+      padding-right: 0;
+    }
+    // PC表示の場合は5番目以降の要素のみmargin-topを当てたい
+    &:nth-child(n+5) {
+      margin-top: 20px;
+      // スマホ表示の場合は不要
+      @include sp {
+        margin-top: 10px;
+      }
+    }
+
+    @include sp {
+      width: 100%;
+      padding: 0;
+      margin-top: 10px;
+
+      &:first-of-type {
+        margin-top: 0;
+      }
+    }
+  }
+  .card {
+    color: #4E4E4E;
+
+    .title {
+      font-size: 18px;
+    }
+
+    .content {
+      min-height: 120px;
+      font-size: 14px;
+
+      .sub-title {
+        display: inline-block;
+        width: 80px;
+      }
+    }
+
+    .indent {
+      margin-left: 10px;
+    }
+  }
+}

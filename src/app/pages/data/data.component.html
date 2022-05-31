@@ -1,0 +1,34 @@
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)"
+             size="default"
+             color="#fff"
+             type="ball-spin-clockwise"
+             [fullScreen]="true"></ngx-spinner>
+
+<main class="main" *ngIf="nitaRecords.length">
+
+    <app-total-or-less class="total-or-less"
+                       [nitaRecords]="nitaRecords"></app-total-or-less>
+
+    <ng-container>
+        <div class="main-container">
+            <div class="card-container" *ngFor="let nitaRecord of nitaRecords">
+                <mat-card class="card">
+                    <mat-card-title class="title">{{nitaRecord.track}}</mat-card-title>
+                    <mat-card-content class="content">
+                        <ng-container *ngIf="nitaRecord.myRecord;else noRecord">
+                            <app-or-less [orLess]="nitaRecord.orLess"></app-or-less>
+                            <div><span class="sub-title">WR:</span>{{nitaRecord.wr1st}}</div>
+                            <div><span class="sub-title">自分の記録:</span>{{nitaRecord.myRecord}}</div>
+                            <div><span class="sub-title">1Rap:</span>{{nitaRecord.firstRap}}</div>
+                            <div><span class="sub-title">2Rap:</span>{{nitaRecord.secondRap}}</div>
+                            <div><span class="sub-title">3Rap:</span>{{nitaRecord.thirdRap}}</div>
+                        </ng-container>
+                        <ng-template #noRecord>
+                            <span class="no-data">記録がありません</span>
+                        </ng-template>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </ng-container>
+</main>

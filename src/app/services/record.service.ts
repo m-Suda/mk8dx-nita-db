@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NitaRecord } from '../types/nita-record';
-import { map, Observable, of, tap } from 'rxjs';
+import { lastValueFrom, map, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 
@@ -23,11 +23,11 @@ export class RecordService {
     /**
      * NITAの記録を取得する
      */
-    public getList(): Observable<NitaRecord[]> {
+    public getList(apiId: string): Promise<NitaRecord[]> {
         if (this._allRecords.length) {
-            return of(this._allRecords);
+            return Promise.resolve(this._allRecords);
         }
-        return this.http.get<NitaRecord[]>(environment.api.url)
+        const request$ = this.http.get<NitaRecord[]>(`${environment.api.domain}${apiId}`)
             .pipe(
                 map(records => {
                     return records.map(record => {
@@ -43,6 +43,8 @@ export class RecordService {
                     this._allRecords = records;
                 })
             );
+
+        return lastValueFrom(request$);
     }
 
     /**
