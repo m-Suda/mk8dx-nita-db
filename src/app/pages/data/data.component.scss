@@ -61,8 +61,12 @@
     }
 
     .content {
-      min-height: 120px;
+      min-height: 124px;
       font-size: 14px;
+
+      .my-record {
+        margin-top: 4px;
+      }
 
       .sub-title {
         display: inline-block;

@@ -15,16 +15,18 @@
                 <mat-card class="card">
                     <mat-card-title class="title">{{nitaRecord.track}}</mat-card-title>
                     <mat-card-content class="content">
+                        <app-or-less [orLess]="nitaRecord.orLess"></app-or-less>
+                        <div><span class="sub-title">WR:</span>{{nitaRecord.wr1st}}</div>
                         <ng-container *ngIf="nitaRecord.myRecord;else noRecord">
-                            <app-or-less [orLess]="nitaRecord.orLess"></app-or-less>
-                            <div><span class="sub-title">WR:</span>{{nitaRecord.wr1st}}</div>
-                            <div><span class="sub-title">自分の記録:</span>{{nitaRecord.myRecord}}</div>
-                            <div><span class="sub-title">1Rap:</span>{{nitaRecord.firstRap}}</div>
-                            <div><span class="sub-title">2Rap:</span>{{nitaRecord.secondRap}}</div>
-                            <div><span class="sub-title">3Rap:</span>{{nitaRecord.thirdRap}}</div>
+                            <div class="my-record">
+                                <div><span class="sub-title">自分の記録:</span>{{nitaRecord.myRecord}}</div>
+                                <div><span class="sub-title">1Rap:</span>{{nitaRecord.firstRap}}</div>
+                                <div><span class="sub-title">2Rap:</span>{{nitaRecord.secondRap}}</div>
+                                <div><span class="sub-title">3Rap:</span>{{nitaRecord.thirdRap}}</div>
+                            </div>
                         </ng-container>
                         <ng-template #noRecord>
-                            <span class="no-data">記録がありません</span>
+                            <span class="no-data my-record">記録がありません</span>
                         </ng-template>
                     </mat-card-content>
                 </mat-card>

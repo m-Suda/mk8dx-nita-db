@@ -1,2 +1,2 @@
 <div *ngIf="orLess && orLess <= 5" class="or-less-{{orLess}}">{{orLess}}落ち</div>
-<div *ngIf="!orLess || orLess > 5" class="out-or-less">圏外</div>
+<div *ngIf="orLess && orLess > 5" class="out-or-less">圏外</div>
