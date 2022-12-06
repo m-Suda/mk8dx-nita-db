@@ -3,6 +3,8 @@ import { NitaRecord } from '../types/nita-record';
 import { lastValueFrom, map, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
+import * as worldRecord from '../wr.json';
+import { WorldRecord } from '../types/world-record';
 
 type TaData = {
     mm: number,
@@ -30,18 +32,21 @@ export class RecordService {
         const request$ = this.http.get<NitaRecord[]>(`${environment.api.domain}${apiId}`)
             .pipe(
                 map(records => {
-                    return records.map(record => {
-                        const { wr1st, myRecord } = record;
+                    return records.map((record, i) => {
+                        const wr: WorldRecord = worldRecord[i];
+                        const { firstRecord: wr1st, rankerRecord: wr10th } = wr;
+
+                        const { myRecord } = record;
                         if (!myRecord) {
-                            return { ...record, orLess: undefined };
+                            return { ...record, wr1st, wr10th, orLess: undefined };
                         }
                         const orLess = this.getOrLessNumber(this.getDiff(wr1st, myRecord));
-                        return { ...record, orLess };
+                        return { ...record, wr1st, wr10th, orLess };
                     });
                 }),
                 tap(records => {
                     this._allRecords = records;
-                })
+                }),
             );
 
         return lastValueFrom(request$);
