@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { NitaRecord } from '../types/nita-record';
-import { lastValueFrom, map, tap } from 'rxjs';
+import { combineLatest, from, lastValueFrom, map, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import * as worldRecord from '../wr.json';
 import { WorldRecord } from '../types/world-record';
 
 type TaData = {
@@ -29,12 +28,14 @@ export class RecordService {
         if (this._allRecords.length) {
             return Promise.resolve(this._allRecords);
         }
-        const request$ = this.http.get<NitaRecord[]>(`${environment.api.domain}${apiId}`)
+        const request$ = combineLatest<[NitaRecord[], WorldRecord[]]>([
+            this.http.get<NitaRecord[]>(`${environment.api.domain}${apiId}`),
+            from(fetch('./assets/wr.json').then(res => res.json()))
+        ])
             .pipe(
-                map(records => {
+                map(([records, wr]) => {
                     return records.map((record, i) => {
-                        const wr: WorldRecord = worldRecord[i];
-                        const { firstRecord: wr1st, rankerRecord: wr10th } = wr;
+                        const { firstRecord: wr1st, rankerRecord: wr10th } = wr[i];
 
                         const { myRecord } = record;
                         if (!myRecord) {
