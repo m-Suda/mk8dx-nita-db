@@ -10,7 +10,9 @@
 .out-or-less {
   width: 50px;
   border-radius: 6px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .or-less-1 {
   background-color: #ffd700;
