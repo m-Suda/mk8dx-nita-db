@@ -13,9 +13,11 @@
         <div class="main-container">
             <div class="card-container" *ngFor="let nitaRecord of nitaRecords">
                 <mat-card class="card">
-                    <mat-card-title class="title">{{nitaRecord.track}}</mat-card-title>
+                    <mat-card-title class="title">
+                        {{nitaRecord.track}}
+                        <app-or-less class="or-less" [orLess]="nitaRecord.orLess"></app-or-less>
+                    </mat-card-title>
                     <mat-card-content class="content">
-                        <app-or-less [orLess]="nitaRecord.orLess"></app-or-less>
                         <div><span class="sub-title">WR:</span>{{nitaRecord.wr1st}}</div>
                         <ng-container *ngIf="nitaRecord.myRecord;else noRecord">
                             <div class="my-record">
