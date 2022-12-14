@@ -30,19 +30,19 @@ export class RecordService {
         }
         const request$ = combineLatest<[NitaRecord[], WorldRecord[]]>([
             this.http.get<NitaRecord[]>(`${environment.api.domain}${apiId}`),
-            from(fetch('./assets/wr.json').then(res => res.json()))
+            from(fetch('./assets/wr.json').then(res => res.json())),
         ])
             .pipe(
                 map(([records, wr]) => {
                     return records.map((record, i) => {
-                        const { firstRecord: wr1st, rankerRecord: wr10th } = wr[i];
+                        const { firstRecord: wr1st, firstRecordUrl: wr1stUrl, rankerRecord: wr10th } = wr[i];
 
                         const { myRecord } = record;
                         if (!myRecord) {
-                            return { ...record, wr1st, wr10th, orLess: undefined };
+                            return { ...record, wr1st, wr1stUrl, wr10th, orLess: undefined };
                         }
                         const orLess = this.getOrLessNumber(this.getDiff(wr1st, myRecord));
-                        return { ...record, wr1st, wr10th, orLess };
+                        return { ...record, wr1st, wr1stUrl, wr10th, orLess };
                     });
                 }),
                 tap(records => {

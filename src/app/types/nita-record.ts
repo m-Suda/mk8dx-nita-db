@@ -15,6 +15,8 @@ export type NitaRecord = {
     thirdRap: string;
     /* URL */
     url: string | null;
+    /* WRの1stのリンク */
+    wr1stUrl?: string;
     /* 検索用の文言 */
     searchTrack: string[];
     /* WRから何落ちか */
