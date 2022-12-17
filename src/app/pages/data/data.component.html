@@ -13,10 +13,12 @@
         <div class="main-container">
             <div class="card-container" *ngFor="let nitaRecord of nitaRecords">
                 <mat-card class="card">
-                    <mat-card-title class="title">
-                        {{nitaRecord.track}}
-                        <app-or-less class="or-less" [orLess]="nitaRecord.orLess"></app-or-less>
-                    </mat-card-title>
+                    <mat-card-header>
+                        <mat-card-title class="title">
+                            {{nitaRecord.track}}
+                            <app-or-less class="or-less" [orLess]="nitaRecord.orLess"></app-or-less>
+                        </mat-card-title>
+                    </mat-card-header>
                     <mat-card-content class="content">
                         <div>
                             <span class="sub-title">WR:</span>

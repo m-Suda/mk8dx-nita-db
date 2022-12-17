@@ -12,3 +12,23 @@ body {
 .mat-form-field-infix {
   border-top: 0.5em solid transparent;
 }
+
+// mat-card-titleの高さを変えるにはここを調整する
+.mat-mdc-card-title {
+  line-height: 16px;
+}
+
+// width: 100%;にしないとコース名と「n落ち」のjustify-contentが効かない
+.mat-mdc-card-header-text {
+  width: 100%;
+}
+
+// mat-mdc-card-title未満の値に設定すると、chipにスクロールバーが表示されるので注意
+.mat-mdc-chip {
+  height: 25px;
+}
+
+// chipがcontainerに設定されているpaddingからはみ出るため。
+.mdc-evolution-chip-set .mdc-evolution-chip-set__chips {
+  margin-left: 0 !important;
+}
