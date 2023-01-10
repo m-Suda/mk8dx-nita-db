@@ -58,7 +58,7 @@ export class RecordService {
      * @param diff
      */
     public getOrLessNumber(diff: number): number {
-        return Math.trunc(diff / 1000) + 1;
+        return Math.ceil(diff / 1000);
     }
 
     /**
