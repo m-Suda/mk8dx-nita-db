@@ -16,7 +16,12 @@
                     <mat-card-header>
                         <mat-card-title class="title">
                             {{nitaRecord.track}}
-                            <app-or-less class="or-less" [orLess]="nitaRecord.orLess"></app-or-less>
+                            <app-chip *ngIf="nitaRecord.orLess && nitaRecord.orLess <= 5"
+                                               [colorClass]="'or-less-' + nitaRecord.orLess"
+                                               [disabled]="true">{{nitaRecord.orLess}}落ち</app-chip>
+                            <app-chip *ngIf="nitaRecord.orLess && nitaRecord.orLess > 5"
+                                               [colorClass]="'out-or-less'"
+                                               [disabled]="true">圏外</app-chip>
                         </mat-card-title>
                     </mat-card-header>
                     <mat-card-content class="content">
