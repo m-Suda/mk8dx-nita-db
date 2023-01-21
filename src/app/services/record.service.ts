@@ -21,7 +21,7 @@ export class RecordService {
     /**
      * NITAの記録を取得する
      */
-    public getList(apiId: string): Promise<NitaRecord[]> {
+    public fetchList(apiId: string): Promise<NitaRecord[]> {
         if (this._allRecords.length) {
             return Promise.resolve(this._allRecords);
         }
@@ -51,10 +51,22 @@ export class RecordService {
     }
 
     /**
-     * その記録は何落ちであるか
-     * @param diff
+     * NITAのフィルターをする
+     * @param filter
      */
-    public getOrLessNumber(diff: number): number {
-        return Math.ceil(diff / 1000);
+    public filterList(filter: OrLessFilter): NitaRecord[] {
+        // 全て有効の場合は
+        if (OrLessFilterUtil.isAllDisplay(filter)) {
+            return this._allRecords;
+        }
+
+        const displayTarget = OrLessFilterUtil.makeDisplayTarget(filter);
+        return this._allRecords.filter(({ orLess }) => {
+            // 記録無しまたは6落ち以上の場合は圏外フィルターが設定されてたら表示する
+            if (orLess == null || orLess > 5) {
+                return filter.outOrLess;
+            }
+            return displayTarget.includes(orLess);
+        });
     }
 }

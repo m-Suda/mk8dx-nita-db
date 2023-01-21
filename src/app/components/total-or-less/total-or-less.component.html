@@ -1,24 +1,42 @@
 <div class="or-less-container">
     <div class="or-less-group">
         <div class="or-less-section">
-            <app-chip [colorClass]="'out-or-less'">圏外</app-chip>:&nbsp;{{totalOrLessOutside}}
+            <app-chip [colorClass]="'out-or-less'"
+                      [checked]="defaultOrLessFilter.outOrLess"
+                      [key]="'outOrLess'"
+                      (change)="onFilterChange($event)">圏外</app-chip>:&nbsp;{{totalOrLessOutside}}
         </div>
         <div class="or-less-section">
-            <app-chip [colorClass]="'or-less-5'">5落ち</app-chip>:&nbsp;{{totalOrLess5}}
+            <app-chip [colorClass]="'or-less-5'"
+                      [checked]="defaultOrLessFilter.orLess5"
+                      [key]="'orLess5'"
+                      (change)="onFilterChange($event)">5落ち</app-chip>:&nbsp;{{totalOrLess5}}
         </div>
         <div class="or-less-section">
-            <app-chip [colorClass]="'or-less-4'">4落ち</app-chip>:&nbsp;{{totalOrLess4}}
+            <app-chip [colorClass]="'or-less-4'"
+                      [checked]="defaultOrLessFilter.orLess4"
+                      [key]="'orLess4'"
+                      (change)="onFilterChange($event)">4落ち</app-chip>:&nbsp;{{totalOrLess4}}
         </div>
     </div>
     <div class="or-less-group">
         <div class="or-less-section">
-            <app-chip [colorClass]="'or-less-3'">3落ち</app-chip>:&nbsp;{{totalOrLess3}}
+            <app-chip [colorClass]="'or-less-3'"
+                      [checked]="defaultOrLessFilter.orLess3"
+                      [key]="'orLess3'"
+                      (change)="onFilterChange($event)">3落ち</app-chip>:&nbsp;{{totalOrLess3}}
         </div>
         <div class="or-less-section">
-            <app-chip [colorClass]="'or-less-2'">2落ち</app-chip>:&nbsp;{{totalOrLess2}}
+            <app-chip [colorClass]="'or-less-2'"
+                      [checked]="defaultOrLessFilter.orLess2"
+                      [key]="'orLess2'"
+                      (change)="onFilterChange($event)">2落ち</app-chip>:&nbsp;{{totalOrLess2}}
         </div>
         <div class="or-less-section">
-            <app-chip [colorClass]="'or-less-1'">1落ち</app-chip>:&nbsp;{{totalOrLess1}}
+            <app-chip [colorClass]="'or-less-1'"
+                      [checked]="defaultOrLessFilter.orLess1"
+                      [key]="'orLess1'"
+                      (change)="onFilterChange($event)">1落ち</app-chip>:&nbsp;{{totalOrLess1}}
         </div>
     </div>
 </div>

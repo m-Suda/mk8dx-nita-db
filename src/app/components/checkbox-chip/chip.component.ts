@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { OrLessKey } from '../../types/or-less-filter';
 
 @Component({
     selector: 'app-chip',
@@ -12,6 +13,13 @@ export class ChipComponent {
      * ※カラーが決まっているのでこの実装にした。
      */
     @Input() colorClass: string = 'out-or-less';
+    @Input() key: OrLessKey = 'outOrLess';
     @Input() checked = false;
     @Input() disabled = false;
+
+    @Output() change = new EventEmitter<{ key: OrLessKey, checked: boolean }>();
+
+    public onChange() {
+        this.change.emit({ key: this.key, checked: this.checked });
+    }
 }

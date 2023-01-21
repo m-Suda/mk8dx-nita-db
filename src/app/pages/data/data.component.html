@@ -4,48 +4,48 @@
              type="ball-spin-clockwise"
              [fullScreen]="true"></ngx-spinner>
 
-<main class="main" *ngIf="nitaRecords.length">
-
+<main class="main" *ngIf="isShow">
     <app-total-or-less class="total-or-less"
                        [nitaRecords]="nitaRecords"></app-total-or-less>
+    <span class="note">※「圏外」〜「◯落ち」をクリックすると表示非表示を切り替えられます。</span>
 
-    <ng-container>
-        <div class="main-container">
-            <div class="card-container" *ngFor="let nitaRecord of nitaRecords">
-                <mat-card class="card">
-                    <mat-card-header>
-                        <mat-card-title class="title">
-                            {{nitaRecord.track}}
-                            <app-chip *ngIf="nitaRecord.orLess && nitaRecord.orLess <= 5"
-                                               [colorClass]="'or-less-' + nitaRecord.orLess"
-                                               [disabled]="true">{{nitaRecord.orLess}}落ち</app-chip>
-                            <app-chip *ngIf="nitaRecord.orLess && nitaRecord.orLess > 5"
-                                               [colorClass]="'out-or-less'"
-                                               [disabled]="true">圏外</app-chip>
-                        </mat-card-title>
-                    </mat-card-header>
-                    <mat-card-content class="content">
-                        <div>
-                            <span class="sub-title">WR:</span>
-                            <a [href]="nitaRecord.wr1stUrl"
-                               target="_blank"
-                               rel="noopener noreferrer">{{nitaRecord.wr1st}}<mat-icon fontIcon="open_in_new"></mat-icon>
-                            </a>
+    <div class="main-container">
+        <div class="card-container" *ngFor="let nitaRecord of nitaRecords">
+            <mat-card class="card">
+                <mat-card-header>
+                    <mat-card-title class="title">
+                        {{nitaRecord.track}}
+                        <app-chip *ngIf="nitaRecord.orLess && nitaRecord.orLess <= 5"
+                                  [colorClass]="'or-less-' + nitaRecord.orLess"
+                                  [checked]="true"
+                                  [disabled]="true">{{nitaRecord.orLess}}落ち</app-chip>
+                        <app-chip *ngIf="nitaRecord.orLess && nitaRecord.orLess > 5"
+                                  [colorClass]="'out-or-less'"
+                                  [checked]="true"
+                                  [disabled]="true">圏外</app-chip>
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content class="content">
+                    <div>
+                        <span class="sub-title">WR:</span>
+                        <a [href]="nitaRecord.wr1stUrl"
+                           target="_blank"
+                           rel="noopener noreferrer">{{nitaRecord.wr1st}}<mat-icon fontIcon="open_in_new"></mat-icon>
+                        </a>
+                    </div>
+                    <ng-container *ngIf="nitaRecord.myRecord;else noRecord">
+                        <div class="my-record">
+                            <div><span class="sub-title">自分の記録:</span>{{nitaRecord.myRecord}}</div>
+                            <div><span class="sub-title">1Rap:</span>{{nitaRecord.firstRap}}</div>
+                            <div><span class="sub-title">2Rap:</span>{{nitaRecord.secondRap}}</div>
+                            <div><span class="sub-title">3Rap:</span>{{nitaRecord.thirdRap}}</div>
                         </div>
-                        <ng-container *ngIf="nitaRecord.myRecord;else noRecord">
-                            <div class="my-record">
-                                <div><span class="sub-title">自分の記録:</span>{{nitaRecord.myRecord}}</div>
-                                <div><span class="sub-title">1Rap:</span>{{nitaRecord.firstRap}}</div>
-                                <div><span class="sub-title">2Rap:</span>{{nitaRecord.secondRap}}</div>
-                                <div><span class="sub-title">3Rap:</span>{{nitaRecord.thirdRap}}</div>
-                            </div>
-                        </ng-container>
-                        <ng-template #noRecord>
-                            <span class="no-data my-record">記録がありません</span>
-                        </ng-template>
-                    </mat-card-content>
-                </mat-card>
-            </div>
+                    </ng-container>
+                    <ng-template #noRecord>
+                        <span class="no-data my-record">記録がありません</span>
+                    </ng-template>
+                </mat-card-content>
+            </mat-card>
         </div>
-    </ng-container>
+    </div>
 </main>

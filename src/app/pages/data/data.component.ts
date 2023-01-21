@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NitaRecord } from '../../types/nita-record';
 import { ActivatedRoute } from '@angular/router';
 import { UserSettingService } from '../../services/user-setting.service';
@@ -6,23 +6,32 @@ import { RecordService } from '../../services/record.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { UserSettingNotFoundError } from '../../classes/errors';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { OrLessFilterNotifyService } from '../../services/or-less-filter-notify.service';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-data',
     templateUrl: './data.component.html',
     styleUrls: ['./data.component.scss'],
 })
-export class DataComponent implements OnInit {
+export class DataComponent implements OnInit, OnDestroy {
     public nitaRecords: NitaRecord[] = [];
     public userName: string = '';
+    public isShow = false;
+
+    private subscription: Subscription;
 
     constructor(
         private route: ActivatedRoute,
         private userSetting: UserSettingService,
         private nitaRecord: RecordService,
         private spinner: NgxSpinnerService,
-        private snackBar: MatSnackBar
+        private snackBar: MatSnackBar,
+        private orLessFilterNotify: OrLessFilterNotifyService
     ) {
+        this.subscription = this.orLessFilterNotify.subscribeNotify((filter) => {
+            this.nitaRecords = this.nitaRecord.filterList(filter);
+        });
     }
 
     async ngOnInit() {
@@ -30,7 +39,7 @@ export class DataComponent implements OnInit {
         try {
             const userId = this.route.snapshot.params['userId'];
             const { apiId } = await this.userSetting.getSetting(userId);
-            this.nitaRecords = await this.nitaRecord.getList(apiId);
+            this.nitaRecords = await this.nitaRecord.fetchList(apiId);
         } catch (e) {
             console.error(e);
             if (e instanceof UserSettingNotFoundError) {
@@ -40,8 +49,13 @@ export class DataComponent implements OnInit {
             }
             this.nitaRecords = [];
         } finally {
+            this.isShow = true;
             await this.spinner.hide();
         }
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 
     /**

@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { DataComponent } from './pages/data/data.component';
 import { ChipComponent } from './components/checkbox-chip/chip.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -26,6 +27,7 @@ import { ChipComponent } from './components/checkbox-chip/chip.component';
         HttpClientModule,
         MaterialModule,
         NgxSpinnerModule,
+        FormsModule,
     ],
     providers: [],
     bootstrap: [AppComponent],
