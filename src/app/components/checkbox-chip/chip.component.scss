@@ -1,0 +1,68 @@
+:host {
+  display: block;
+}
+
+label {
+  input {
+    display: none;
+  }
+  span {
+    width: 65px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #4E4E4E;
+    border: 1px #4E4E4E solid;
+    border-radius: 20px;
+
+    &.or-less-1 {
+      border: 1px #ffd700 solid;
+    }
+    &.or-less-2 {
+      border: 1px #C9CACA solid;
+    }
+    &.or-less-3 {
+      border: 1px #d87b5f solid;
+    }
+    &.or-less-4 {
+      border: 1px #00c40e solid;
+    }
+    &.or-less-5 {
+      border: 1px #a9ceec solid;
+    }
+    &.out-or-less {
+      border: 1px #f380c7 solid;
+    }
+  }
+
+  input:checked + span {
+    color: #fff;
+
+    &.or-less-1 {
+      border: 1px #ffd700 solid;
+      background-color: #ffd700;
+    }
+    &.or-less-2 {
+      border: 1px #C9CACA solid;
+      background-color: #C9CACA;
+    }
+    &.or-less-3 {
+      border: 1px #d87b5f solid;
+      background-color: #d87b5f;
+    }
+    &.or-less-4 {
+      border: 1px #00c40e solid;
+      background-color: #00c40e;
+    }
+    &.or-less-5 {
+      border: 1px #a9ceec solid;
+      background-color: #a9ceec;
+    }
+    &.out-or-less {
+      border: 1px #f380c7 solid;
+      background-color: #f380c7;
+    }
+  }
+}

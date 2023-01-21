@@ -1,0 +1,4 @@
+<label>
+    <input type="checkbox" [(ngModel)]="checked" (ngModelChange)="onChange()" [disabled]="disabled">
+    <span [ngClass]="colorClass"><ng-content></ng-content></span>
+</label>

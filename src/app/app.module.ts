@@ -5,19 +5,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './modules/material.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { OrLessComponent } from './components/or-less/or-less.component';
 import { TotalOrLessComponent } from './components/total-or-less/total-or-less.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { DataComponent } from './pages/data/data.component';
+import { ChipComponent } from './components/checkbox-chip/chip.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
         AppComponent,
-        OrLessComponent,
         TotalOrLessComponent,
         PageNotFoundComponent,
         DataComponent,
+        ChipComponent,
     ],
     imports: [
         AppRoutingModule,
@@ -26,6 +27,7 @@ import { DataComponent } from './pages/data/data.component';
         HttpClientModule,
         MaterialModule,
         NgxSpinnerModule,
+        FormsModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

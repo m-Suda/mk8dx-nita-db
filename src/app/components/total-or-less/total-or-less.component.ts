@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NitaRecord } from '../../types/nita-record';
+import { OrLessFilter, OrLessKey } from '../../types/or-less-filter';
+import { OrLessFilterNotifyService } from '../../services/or-less-filter-notify.service';
 
 @Component({
     selector: 'app-total-or-less',
@@ -9,6 +11,14 @@ import { NitaRecord } from '../../types/nita-record';
 export class TotalOrLessComponent implements OnInit {
 
     @Input() nitaRecords: NitaRecord[] = [];
+    public defaultOrLessFilter: OrLessFilter = {
+        outOrLess: true,
+        orLess5: true,
+        orLess4: true,
+        orLess3: true,
+        orLess2: true,
+        orLess1: true
+    };
 
     public totalOrLessOutside: number = 0;
     public totalOrLess5: number = 0;
@@ -17,7 +27,9 @@ export class TotalOrLessComponent implements OnInit {
     public totalOrLess2: number = 0;
     public totalOrLess1: number = 0;
 
-    constructor() {
+    constructor(
+        private orLessFilterNotify: OrLessFilterNotifyService
+    ) {
     }
 
     ngOnInit(): void {
@@ -30,4 +42,7 @@ export class TotalOrLessComponent implements OnInit {
         this.totalOrLess1 = orLessList.filter((orLess) => orLess === 1).length;
     }
 
+    public onFilterChange(event: { key: OrLessKey, checked: boolean }) {
+        this.orLessFilterNotify.notifyChangeFilter(event);
+    }
 }

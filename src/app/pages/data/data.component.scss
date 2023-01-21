@@ -9,6 +9,13 @@
   @include sp {
     padding: 0 5%;
   }
+
+  .note {
+    display: inline-block;
+    margin-top: 4px;
+    color: #4E4E4E;
+    font-size: 12px;
+  }
 }
 
 .no-data {
@@ -22,7 +29,7 @@
 .main-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: flex-start;
   margin-top: 20px;
   padding-bottom: 20px;
 
@@ -55,7 +62,7 @@
   }
   .card {
     color: #4E4E4E;
-    min-height: 165px;
+    min-height: 172px;
 
     .title {
       display: flex;
