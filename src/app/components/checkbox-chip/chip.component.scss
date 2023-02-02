@@ -27,13 +27,16 @@ label {
       border: 1px #d87b5f solid;
     }
     &.or-less-4 {
-      border: 1px #00c40e solid;
+      border: 1px #65cb6d solid;
     }
     &.or-less-5 {
       border: 1px #a9ceec solid;
     }
     &.out-or-less {
-      border: 1px #f380c7 solid;
+      border: 1px #ed9ace solid;
+    }
+    &.no-record {
+      border: 1px #7b7b7b solid;
     }
   }
 
@@ -53,16 +56,20 @@ label {
       background-color: #d87b5f;
     }
     &.or-less-4 {
-      border: 1px #00c40e solid;
-      background-color: #00c40e;
+      border: 1px #65cb6d solid;
+      background-color: #65cb6d;
     }
     &.or-less-5 {
       border: 1px #a9ceec solid;
       background-color: #a9ceec;
     }
     &.out-or-less {
-      border: 1px #f380c7 solid;
-      background-color: #f380c7;
+      border: 1px #ed9ace solid;
+      background-color: #ed9ace;
+    }
+    &.no-record {
+      border: 1px #7b7b7b solid;
+      background-color: #7b7b7b;
     }
   }
 }

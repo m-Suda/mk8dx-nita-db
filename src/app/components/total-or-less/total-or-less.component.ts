@@ -12,6 +12,7 @@ export class TotalOrLessComponent implements OnInit {
 
     @Input() nitaRecords: NitaRecord[] = [];
     public defaultOrLessFilter: OrLessFilter = {
+        noRecord: true,
         outOrLess: true,
         orLess5: true,
         orLess4: true,
@@ -20,6 +21,7 @@ export class TotalOrLessComponent implements OnInit {
         orLess1: true
     };
 
+    public noRecord: number = 0;
     public totalOrLessOutside: number = 0;
     public totalOrLess5: number = 0;
     public totalOrLess4: number = 0;
@@ -34,7 +36,8 @@ export class TotalOrLessComponent implements OnInit {
 
     ngOnInit(): void {
         const orLessList = this.nitaRecords.map(({ orLess }) => orLess);
-        this.totalOrLessOutside = orLessList.filter((orLess) => !orLess || orLess > 5).length;
+        this.noRecord = orLessList.filter((orLess) => !orLess).length;
+        this.totalOrLessOutside = orLessList.filter((orLess) => orLess && orLess > 5).length;
         this.totalOrLess5 = orLessList.filter((orLess) => orLess === 5).length;
         this.totalOrLess4 = orLessList.filter((orLess) => orLess === 4).length;
         this.totalOrLess3 = orLessList.filter((orLess) => orLess === 3).length;

@@ -1,6 +1,14 @@
 <div class="or-less-container">
     <div class="or-less-group">
         <div class="or-less-section">
+            <app-chip [colorClass]="'no-record'"
+                      [checked]="defaultOrLessFilter.noRecord"
+                      [key]="'noRecord'"
+                      (change)="onFilterChange($event)">記録なし</app-chip>:&nbsp;{{noRecord}}
+        </div>
+    </div>
+    <div class="or-less-group">
+        <div class="or-less-section">
             <app-chip [colorClass]="'out-or-less'"
                       [checked]="defaultOrLessFilter.outOrLess"
                       [key]="'outOrLess'"

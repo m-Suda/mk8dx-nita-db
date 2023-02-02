@@ -1,4 +1,5 @@
 export type OrLessFilter = {
+    noRecord: boolean,
     outOrLess: boolean,
     orLess5: boolean,
     orLess4: boolean,
