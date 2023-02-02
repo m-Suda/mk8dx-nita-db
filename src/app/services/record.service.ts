@@ -36,7 +36,7 @@ export class RecordService {
 
                         const { myRecord } = record;
                         if (!myRecord) {
-                            return { ...record, wr1st, wr1stUrl, wr10th, orLess: undefined };
+                            return { ...record, wr1st, wr1stUrl, wr10th, orLess: null };
                         }
                         const orLess = OrLessUtil.convertTimeToOrLess(wr1st, myRecord);
                         return { ...record, wr1st, wr1stUrl, wr10th, orLess };
@@ -62,8 +62,11 @@ export class RecordService {
 
         const displayTarget = OrLessFilterUtil.makeDisplayTarget(filter);
         return this._allRecords.filter(({ orLess }) => {
+            if (orLess == null) {
+                return filter.noRecord;
+            }
             // 記録無しまたは6落ち以上の場合は圏外フィルターが設定されてたら表示する
-            if (orLess == null || orLess > 5) {
+            if (orLess > 5) {
                 return filter.outOrLess;
             }
             return displayTarget.includes(orLess);

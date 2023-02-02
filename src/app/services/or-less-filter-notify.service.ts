@@ -8,6 +8,7 @@ import { OrLessFilter, OrLessKey } from '../types/or-less-filter';
 export class OrLessFilterNotifyService {
 
     private orLessFilter$ = new BehaviorSubject<OrLessFilter>({
+        noRecord: true,
         outOrLess: true,
         orLess5: true,
         orLess4: true,
