@@ -65,6 +65,7 @@
     min-height: 172px;
 
     .title {
+      min-height: 32px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -75,30 +76,35 @@
       }
     }
 
-    .content {
+    .content-table {
       font-size: 14px;
 
-      a {
-        color: #4E4E4E;
+      .row {
+        display: flex;
+        align-items: center;
 
-        mat-icon {
-          transform: scale(0.6);
-          vertical-align: middle;
+        .name {
+          width: 80px;
+        }
+
+        .data {
+          a {
+            display: flex;
+            align-items: center;
+            color: #4E4E4E;
+            &:hover {
+              cursor: pointer;
+            }
+            mat-icon {
+              transform: scale(0.6);
+              vertical-align: middle;
+            }
+          }
+          .image {
+            width: 24px;
+          }
         }
       }
-
-      .my-record {
-        margin-top: 4px;
-      }
-
-      .sub-title {
-        display: inline-block;
-        width: 80px;
-      }
-    }
-
-    .indent {
-      margin-left: 10px;
     }
   }
 }

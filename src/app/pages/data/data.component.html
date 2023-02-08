@@ -25,24 +25,47 @@
                                   [disabled]="true">圏外</app-chip>
                     </mat-card-title>
                 </mat-card-header>
-                <mat-card-content class="content">
-                    <div>
-                        <span class="sub-title">WR:</span>
-                        <a [href]="nitaRecord.wr1stUrl"
-                           target="_blank"
-                           rel="noopener noreferrer">{{nitaRecord.wr1st}}<mat-icon fontIcon="open_in_new"></mat-icon>
-                        </a>
+                <mat-card-content class="content-table">
+                    <div class="row">
+                        <div class="name">WR:</div>
+                        <div class="data">
+                            <a [href]="nitaRecord.wr1stUrl"
+                               target="_blank"
+                               rel="noopener noreferrer">{{nitaRecord.wr1st}}<mat-icon fontIcon="open_in_new"></mat-icon>
+                            </a>
+                        </div>
                     </div>
                     <ng-container *ngIf="nitaRecord.myRecord;else noRecord">
-                        <div class="my-record">
-                            <div><span class="sub-title">自分の記録:</span>{{nitaRecord.myRecord}}</div>
-                            <div><span class="sub-title">1Rap:</span>{{nitaRecord.firstRap}}</div>
-                            <div><span class="sub-title">2Rap:</span>{{nitaRecord.secondRap}}</div>
-                            <div><span class="sub-title">3Rap:</span>{{nitaRecord.thirdRap}}</div>
+                        <div class="row">
+                            <div class="name">自分の記録</div>
+                            <div class="data">
+                                <ng-container *ngIf="nitaRecord.url;else noUrl">
+                                    <a [href]="nitaRecord.url"
+                                       target="_blank"
+                                       rel="noopener noreferrer">
+                                        {{nitaRecord.myRecord}}<img class="image" src="/assets/images/youtube.png">
+                                    </a>
+                                </ng-container>
+                                <ng-template #noUrl>
+                                    {{nitaRecord.myRecord}}
+                                </ng-template>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="name">1Rap:</div>
+                            <div class="data">{{nitaRecord.firstRap}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="name">2Rap:</div>
+                            <div class="data">{{nitaRecord.secondRap}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="name">3Rap:</div>
+                            <div class="data">{{nitaRecord.thirdRap}}</div>
                         </div>
                     </ng-container>
                     <ng-template #noRecord>
-                        <span class="no-data my-record">記録がありません</span>
+                        <div class="no-data">記録がありません</div>
                     </ng-template>
                 </mat-card-content>
             </mat-card>
