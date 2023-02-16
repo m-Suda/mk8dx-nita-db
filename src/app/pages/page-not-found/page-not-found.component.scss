@@ -1,11 +1,12 @@
 @import "responsive";
 
 :host {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
 }
-
+.header {
+  color: #FFF;
+  background-color: #4E4E4E;
+}
 .container {
   display: flex;
   align-items: center;

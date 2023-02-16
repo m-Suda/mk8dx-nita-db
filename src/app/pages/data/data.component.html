@@ -3,6 +3,15 @@
              color="#fff"
              type="ball-spin-clockwise"
              [fullScreen]="true"></ngx-spinner>
+<header>
+    <mat-toolbar class="header">
+        <span>MK8DX NITA DB</span>
+        <span class="spacer"></span>
+        <button mat-icon-button (click)="reload()">
+            <mat-icon>refresh</mat-icon>
+        </button>
+    </mat-toolbar>
+</header>
 
 <main class="main" *ngIf="isShow">
     <app-total-or-less class="total-or-less"
