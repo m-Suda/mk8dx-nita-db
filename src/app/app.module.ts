@@ -12,6 +12,8 @@ import { DataComponent } from './pages/data/data.component';
 import { ChipComponent } from './components/checkbox-chip/chip.component';
 import { FormsModule } from '@angular/forms';
 import { ConvertOrLessPipe } from './pipes/convert-or-less.pipe';
+import { RecordDetailComponent } from './components/record-detail/record-detail.component';
+import { CalcTimeDiffPipe } from './pipes/calc-time-diff.pipe';
 
 @NgModule({
     declarations: [
@@ -21,6 +23,8 @@ import { ConvertOrLessPipe } from './pipes/convert-or-less.pipe';
         DataComponent,
         ChipComponent,
         ConvertOrLessPipe,
+        RecordDetailComponent,
+        CalcTimeDiffPipe,
     ],
     imports: [
         AppRoutingModule,

@@ -3,8 +3,8 @@ export type NitaRecord = {
     track: string;
     /* WRの1st */
     wr1st: string;
-    /* WRの10th */
-    wr10th: string;
+    /* WRの境界記録 */
+    rankerRecord: string;
     /* 自分の記録 */
     myRecord: string;
     /* 1周目の記録 */

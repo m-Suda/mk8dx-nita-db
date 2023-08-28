@@ -11,6 +11,31 @@ export class OrLessUtil {
     }
 
     /**
+     * 2つの記録の差分を計算する
+     * @param sourceR
+     * @param myR
+     */
+    public static calcTimeDiff(sourceR: string, myR: string): number {
+        const sourcems = OrLessUtil.convertTimeToMilliSecond(sourceR);
+        const mrms = OrLessUtil.convertTimeToMilliSecond(myR);
+
+        return mrms - sourcems;
+    }
+
+    /**
+     * 差分を00:00.000形式の文字列に変換する
+     * @param diff
+     */
+    public static convertDiffIntoStr(diff: number): string {
+        const { mm, ss, sss } = OrLessUtil.makeTimeFromMS(diff);
+
+        const m = String(mm).padStart(1, '0');
+        const s = String(ss).padStart(2, '0');
+
+        return `${m}:${s}.${sss.padEnd(3, '0')}`;
+    }
+
+    /**
      * 差分ををN落ちに変換する
      * @param diff
      */
@@ -43,4 +68,28 @@ export class OrLessUtil {
         };
     }
 
+    /**
+     * ミリ秒から記録を作成する
+     * ※ミリ秒が例えば095と950の場合、数値にするとどちらも95となってしまうため文字列にしている
+     * @param ms
+     * @private
+     */
+    private static makeTimeFromMS(ms: number): {
+        mm: number,
+        ss: number,
+        sss: string
+    } {
+        const tmpSss = ms / 1000;
+        const sss = String(tmpSss).split('.')[1];
+
+        return {
+            mm: Math.floor(ms / 1000 / 60),
+            ss: Math.floor(ms / 1000) % 60,
+            /**
+             * 小数点以下を文字列変換後に「.」で取得するため例えば095の場合は取得できるが、
+             * 950のとき末尾の0が取得できないため、padEndで0を末尾に付与する
+             */
+            sss: sss.padEnd(3, '0')
+        };
+    }
 }

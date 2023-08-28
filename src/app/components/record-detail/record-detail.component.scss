@@ -1,0 +1,41 @@
+:host {
+}
+
+.table {
+
+  &:not(&:first-child) {
+    margin-top: 16px;
+  }
+
+  .title {
+    font-weight: bold;
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+
+    .name {
+      width: 130px;
+    }
+
+    .data {
+      a {
+        display: flex;
+        align-items: center;
+        color: #4E4E4E;
+        &:hover {
+          cursor: pointer;
+        }
+        mat-icon {
+          transform: scale(0.6);
+          vertical-align: middle;
+        }
+      }
+      .image {
+        width: 24px;
+      }
+    }
+  }
+}
+
