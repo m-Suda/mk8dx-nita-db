@@ -16,6 +16,9 @@
   @include sp {
     padding: 0 5%;
   }
+  @include monitor {
+    padding: 0 20%;
+  }
 
   .note {
     display: inline-block;
@@ -69,18 +72,10 @@
   }
   .card {
     color: #4E4E4E;
-    min-height: 172px;
 
-    .title {
-      min-height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 16px;
-
-      .or-less {
-        font-size: 14px;
-      }
+    > .image {
+      height: 130px;
+      object-fit: cover;
     }
 
     .content-table {

@@ -21,4 +21,6 @@ export type NitaRecord = {
     searchTrack: string[];
     /* WRから何落ちか */
     orLess: number | null;
+    /* Image ID */
+    imageId: number;
 };

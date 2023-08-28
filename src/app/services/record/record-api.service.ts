@@ -37,12 +37,13 @@ export class RecordApiService {
                     return records.map((record, i) => {
                         const { trackJp, firstRecord: wr1st, firstRecordUrl: wr1stUrl, rankerRecord: wr10th } = wr[i];
 
+                        const imageId = i + 1;
                         const { myRecord } = record;
                         if (!myRecord) {
-                            return { ...record, track: trackJp, wr1st, wr1stUrl, wr10th, orLess: null };
+                            return { ...record, track: trackJp, wr1st, wr1stUrl, wr10th, orLess: null, imageId };
                         }
                         const orLess = OrLessUtil.convertTimeToOrLess(wr1st, myRecord);
-                        return { ...record, track: trackJp, wr1st, wr1stUrl, wr10th, orLess };
+                        return { ...record, track: trackJp, wr1st, wr1stUrl, wr10th, orLess, imageId };
                     });
                 }),
             );
