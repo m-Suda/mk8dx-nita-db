@@ -11,6 +11,9 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { DataComponent } from './pages/data/data.component';
 import { ChipComponent } from './components/checkbox-chip/chip.component';
 import { FormsModule } from '@angular/forms';
+import { ConvertOrLessPipe } from './pipes/convert-or-less.pipe';
+import { RecordDetailComponent } from './components/record-detail/record-detail.component';
+import { CalcTimeDiffPipe } from './pipes/calc-time-diff.pipe';
 
 @NgModule({
     declarations: [
@@ -19,6 +22,9 @@ import { FormsModule } from '@angular/forms';
         PageNotFoundComponent,
         DataComponent,
         ChipComponent,
+        ConvertOrLessPipe,
+        RecordDetailComponent,
+        CalcTimeDiffPipe,
     ],
     imports: [
         AppRoutingModule,

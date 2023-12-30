@@ -12,6 +12,8 @@ import { OrLessFilterDataService } from '../../services/or-less-filter/or-less-f
 import { RecordApiService } from '../../services/record/record-api.service';
 import { RecordNotifyService } from '../../services/record/record-notify.service';
 import { OrLessFilterUtil } from '../../classes/or-less-filter-util';
+import { MatDialog } from '@angular/material/dialog';
+import { RecordDetailComponent } from '../../components/record-detail/record-detail.component';
 
 @Component({
     selector: 'app-data',
@@ -27,6 +29,7 @@ export class DataComponent implements OnInit, OnDestroy {
     private apiId = '';
 
     constructor(
+        private dialog: MatDialog,
         private route: ActivatedRoute,
         private userSettingService: UserSettingService,
         private recordApiService: RecordApiService,
@@ -98,6 +101,19 @@ export class DataComponent implements OnInit, OnDestroy {
             this.isShow = true;
             await this.spinner.hide();
         }
+    }
+
+    /**
+     * 詳細を表示
+     * @param record
+     */
+    public openDetail(record: NitaRecord) {
+        this.dialog.open(
+            RecordDetailComponent,
+            {
+                data: record,
+            }
+        );
     }
 
     /**

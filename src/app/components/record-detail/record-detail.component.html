@@ -1,0 +1,59 @@
+<h1 mat-dialog-title>詳細</h1>
+<div mat-dialog-content>
+    <div class="table">
+        <div class="title">概要</div>
+        <div class="row">
+            <div class="name">1位の記録:</div>
+            <div class="data">{{data.wr1st}}</div>
+        </div>
+        <div class="row">
+            <div class="name">ランカーの記録:</div>
+            <div class="data">
+                <div class="data">{{data.rankerRecord}}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="name">自分の記録:</div>
+            <div class="data">
+                <ng-container *ngIf="data.myRecord;else noRecord">{{data.myRecord}}</ng-container>
+            </div>
+        </div>
+        <div class="row">
+            <div class="name">1位との差:</div>
+            <div class="data">{{data.myRecord|calcTimeDiff:data.wr1st}}</div>
+        </div>
+        <div class="row">
+            <div class="name">ランクインまで:</div>
+            <div class="data">{{data.myRecord|calcTimeDiff:data.rankerRecord}}</div>
+        </div>
+    </div>
+
+    <div class="table">
+        <div class="title">各Rap記録</div>
+        <div class="row">
+            <div class="name">1Rap:</div>
+            <div class="data">
+                <ng-container *ngIf="data.firstRap;else noRecord">{{data.firstRap}}</ng-container>
+            </div>
+        </div>
+        <div class="row">
+            <div class="name">2Rap:</div>
+            <div class="data">
+                <ng-container *ngIf="data.secondRap;else noRecord">{{data.secondRap}}</ng-container>
+            </div>
+        </div>
+        <div class="row">
+            <div class="name">3Rap:</div>
+            <div class="data">
+                <ng-container *ngIf="data.thirdRap;else noRecord">{{data.thirdRap}}</ng-container>
+            </div>
+        </div>
+    </div>
+</div>
+<div mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Close</button>
+</div>
+
+<ng-template #noRecord>
+    記録なし
+</ng-template>

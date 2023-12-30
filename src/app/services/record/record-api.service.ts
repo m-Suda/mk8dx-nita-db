@@ -35,14 +35,15 @@ export class RecordApiService {
             .pipe(
                 map(([records, wr]) => {
                     return records.map((record, i) => {
-                        const { firstRecord: wr1st, firstRecordUrl: wr1stUrl, rankerRecord: wr10th } = wr[i];
+                        const { trackJp, firstRecord: wr1st, firstRecordUrl: wr1stUrl, rankerRecord } = wr[i];
 
+                        const imageId = i + 1;
                         const { myRecord } = record;
                         if (!myRecord) {
-                            return { ...record, wr1st, wr1stUrl, wr10th, orLess: null };
+                            return { ...record, track: trackJp, wr1st, wr1stUrl, rankerRecord, orLess: null, imageId };
                         }
                         const orLess = OrLessUtil.convertTimeToOrLess(wr1st, myRecord);
-                        return { ...record, wr1st, wr1stUrl, wr10th, orLess };
+                        return { ...record, track: trackJp, wr1st, wr1stUrl, rankerRecord, orLess, imageId };
                     });
                 }),
             );
